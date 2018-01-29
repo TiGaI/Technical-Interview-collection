@@ -70,3 +70,47 @@ clicking on the name of each tag in the summary will highlight the tags in the s
 Examples:
 58938   ==>   98538 
 1234     ==>   4231
+Find the largest index, swapping it with the first index. If the the largest index is in the first index, find the second largest.
+
+
+26. WHat is AWS?
+	AWS(Amazon Web Services) is a platform to provide secure cloud services, database storage, offerings to ocmputer power, content delivery, and other services to help business level and develop
+
+27. What components involved in Amazon Web Services?
+	4 components involved: 
+	Amazon S3 - one can retrieve key information which are occupied in creating cloud structural design and amount of produced information also can be stored in this compoenent that is
+	the consequence of the key specified.
+
+	Amazon EC2 Instance: Helpful to run large distributed system on the hadoop cluster.
+
+	Anazib SQS: this component acts as a mediator between different controllers.
+
+	Amazon SimpleDB: Helps in storing the transitional position log and errands executed by the consumers
+
+
+28. AWS (scaling from millions to tens or hundreds of millions of users) 
+	Python 
+	Infrastructure and Scaling/Scalability Experience 
+	Object-Oriented Programming 
+	Consumer facing product experience
+
+29. What are the different relational databases structures
+One to One, One to Many, Many to One, Many to Many
+
+30. Different between flexibility and Scalability?
+Scalability is the aptitude of any schema to enhance the task on hand on its present reources
+Flexibility is the capability of a scheme to augment the tasks on hand on its present and supplementary hardware property
+
+31. Generate all partitions for an integer
+	def partitions(n):
+		# base case of recursion: zero is the sum of the empty list
+		if n == 0:
+			yield []
+			return
+			
+		# modify partitions of n-1 to form partitions of n
+		for p in partitions(n-1):
+			yield [1] + p
+			if p and (len(p) < 2 or p[1] > p[0]):
+				yield [p[0] + 1] + p[1:]
+
