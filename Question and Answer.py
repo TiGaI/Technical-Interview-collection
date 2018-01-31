@@ -33,7 +33,9 @@ reference counting, count for each reference that exist, delete it when count re
 
 10.Describe your coding processes?
 
-11.What is a mutex and semaphone?
+11.What is a mutex and semaphone? (JAVA)
+Mutex is locking mechanism object that allows multiple program thred to access a single resource but not simultaneously
+Semaphore is a signaling mechanism and integer variable allow multiple program thread to access a finite instance of resources
 
 12. Solve KnapSack probelm using buttom-up solution?
 
@@ -114,3 +116,47 @@ Flexibility is the capability of a scheme to augment the tasks on hand on its pr
 			if p and (len(p) < 2 or p[1] > p[0]):
 				yield [p[0] + 1] + p[1:]
 
+32. Hashmap implementation in python.
+>>> h = hashlib.new('ripemd160')
+>>> h.update("Nobody inspects the spammish repetition")
+>>> h.hexdigest()
+'cc4a5ce1b3df48aec5d22d1f16b894a0b894eccc'
+
+33. What is the different type mongos and Redis?
+MongoDB much easier to code, a nire schemaable data- store document. Disk base memory
+But Redis offer more flexibility and it is much faster, a cache layer can probably be better implemented in redis. It store key value. Similar to a list or common data structures learn in classes. In memory
+
+34. When to use noSQL verses SQL Database
+SQL is digital, works best when a database is clearly defined and discrete items with exact specisc
+NoSql is work best with data that is organic and has some type of variablity.
+
+35. Using Redis on Caching
+if (isset($queryParams['search'])) {
+
+    $redis = new Client();
+    $hash = md5($_SERVER['QUERY_STRING']);
+    if (!$redis->get($hash . '-results')) {
+
+        $diffbot = new Diffbot(DIFFBOT_TOKEN);
+
+        // Building the search string
+        $searchHelper = new SearchHelper();
+        $string = (isset($queryParams['q']) && !empty($queryParams['q']))
+            ? $queryParams['q']
+            : $searchHelper->stringFromParams($queryParams);
+
+        // Basics
+        $search = $diffbot
+            ->search($string)
+            ->setCol('sp_search')
+            ->setStart(($queryParams['page'] - 1) * $resultsPerPage)
+            ->setNum($resultsPerPage);
+
+        $redis->set($hash . '-results', serialize($search->call()));
+        $redis->expire($hash . '-results', 86400);
+        $redis->set($hash . '-info', serialize($search->call(true)));
+        $redis->expire($hash . '-info', 86400);
+    }
+
+    $results = unserialize($redis->get($hash . '-results'));
+    $info = unserialize($redis->get($hash . '-info'));
