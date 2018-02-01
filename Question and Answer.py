@@ -160,3 +160,25 @@ if (isset($queryParams['search'])) {
 
     $results = unserialize($redis->get($hash . '-results'));
     $info = unserialize($redis->get($hash . '-info'));
+
+36. Count all possible paths from top left to bottom right of a MxN matrix with the constraints that from each cell you can either move only right or down
+#recursion:
+def numofpath(m,n):
+	if m == 1 or n == 1:
+		return 1
+	return numofpath(m-1.n) + numofpath(m,n-1)
+#Bottom up solution
+    array = np.zeros(rows*cols).reshape(rows,cols)
+    
+    for index in range(0,len(array)):
+        array[index][0] = 1
+
+    for index in range(0,len(array[0])):
+        array[0][index] = 1
+
+    for i in range(1, rows):
+        for j in range(0,cols):
+            array[i][j] = array[i-1][j] + array[i][j-1]
+    print(array)
+
+37. 

@@ -1,15 +1,15 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
-%matplotlib inline
-
-#Basic information looking
-USAhousing = pd.read_csv('USA_Housing.csv')
-USAhousing.head()
-USAhousing.info()
-USAhousing.describe()
-USAhousing.columns
+import seaborn as sns																							#Basic information looking
+%matplotlib inline																								#Create some simple plots from seaborn
+																												#Training a Linear Regression Model
+#Basic information looking                                         												#Split data into Training set and a testing test
+USAhousing = pd.read_csv('USA_Housing.csv')																		#Creating and Training the Model
+USAhousing.head()																								#fit the data
+USAhousing.info()																								#Model Evaluation, look at the coeffeicent
+USAhousing.describe()																							#Get Predictions From our Model
+USAhousing.columns																								#Regression Evaluation Metrics
 USAhousing.index
 
 #Create some simple plots from seaborn
@@ -72,23 +72,18 @@ train['Fare'].hist(color='green',bins=40,figsize=(8,4))
 plt.figure(figsize=(12, 7))
 sns.boxplot(x='Pclass',y='Age',data=train,palette='winter')
 
-Fill in missing data
+#Fill in missing data
 sns.heatmap(train.isull(),yticklabels=False,cbar=False,cmap='viridis')
 def impute_age(cols):
     Age = cols[0]
     Pclass = cols[1]
-    
     if pd.isnull(Age):
-
         if Pclass == 1:
             return 37
-
         elif Pclass == 2:
             return 29
-
         else:
             return 24
-
     else:
         return Age
 
@@ -115,3 +110,51 @@ predictions = logmodel.predict(X_test)
 from sklearn.metrics import classification_report
 print(classification_report(y_test,predictions))
 
+
+#Decision Trees and Random Forests in Pythons
+#More Information Gain
+#Entropy is a measure of uncertainty associated with our data
+
+#Use for both classification and regression problem
+#Hunt's algorithm, greedy model. Take in the current most optimal decision instead of account for the global optimuizaiton
+Check simple pairplot of this small dataset
+sns.pairplot(df,hue='Kyphosis',palette='Set1')
+
+#Train Test Split
+from sklearn.model_selection import train_test_split
+X = df.drop('Kyphosis', axis=1)
+Y = df['Kyphosis']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30)
+
+#Train
+from sklearn.tree import DecisionTreeClassifier
+dtree = DecisionTreeClassifier()
+dtree.fit(X_train,y_train)
+
+#Prediction and evaluation
+from sklearn.metrics import classification_report,confusion_matrix
+
+#Tree Visualization
+from IPython.display import Image  
+from sklearn.externals.six import StringIO  
+from sklearn.tree import export_graphviz
+import pydot 
+#Get the features wanted, in this case it is age, number, start
+features = list(df.columns[1:])
+
+dot_data = StringIO()  
+export_graphviz(dtree, out_file=dot_data,feature_names=features,filled=True,rounded=True)
+graph = pydot.graph_from_dot_data(dot_data.getvalue())  
+Image(graph[0].create_png())
+
+#Random Tree
+from sklearn.ensemble import RandomForestClassifier
+rfc = RandomForestClassifier(n_estimators=100)
+rfc.fit(X_train, y_train)
+rfc_pred = rfc.predict(X_test)
+print(classification_report(y_test,rfc_pred))
+
+
+
+#K Nearest Neightbors
+#Use to find connection between the data and target classes and predicts a class for a new data point based off of the features

@@ -162,3 +162,25 @@ A.tocsr()
 b = np.random.rand(1000)
 linalg.spsolve(A, b)
 #There is a lot more that SciPy is capable of, such as Fourier Transforms, Bessel Functions, etc...
+
+"Snsborn"
+import seaborn as sns
+df['col'].hist(bins="number of bins")
+df['A'].plot(kind="hist", bins=30)
+df['A'].plot.hist()
+#Area plot
+plot.area(alpha="0 to 1") 
+#bar plot
+df2.plot.bar()
+#boxplot
+sns.boxplot(x='class',y='age',data=titanic,palette='rainbow')
+#distribution graph
+sns.distplot(titanic['fare'],bins=30,kde=False,color='red')
+#joint Graph
+sns.jointplot(x='fare',y='age',data=titanic)
+#swarmplot
+sns.swarmplot(x='class',y='age',data=titanic,palette='Set2')
+#count plot
+sns.countplot(x='sex',data=titanic)
+#heat map
+sns.heatmap(titanic.corr(),cmap='coolwarm')
