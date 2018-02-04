@@ -181,4 +181,100 @@ def numofpath(m,n):
             array[i][j] = array[i-1][j] + array[i][j-1]
     print(array)
 
-37. 
+37. Different between xrange and range in python
+1. range() return a list while xrange return a xrange object
+2. xrange() is lazy evaluation and a generator, therefore list operator can't not work on them
+3. range rake more memory , xrange is deprecated in python 3
+
+38. How Multithreading is achieved in python
+    Python has a multi- threading package but if you want to mult-thread to speed your code up.
+    Python has a construct called global interpreter lock(GIL). GIL makes sure that only one of your "threads" can execute at any one time. A Thread acquires the GIL, does a little work, then passes GIL onto next thread
+    This happens very fast, so it seems it is executing in parallel. But just take turn using the same CPU
+    All this GIL Passing adds overhead to exectuion
+    For true multi processing, you need to use a multiprocessing module
+
+39. What is monkey patching in Python?
+    Monkey patching refers to dynamic modification of a class or module at runtime or outside of the module or class
+
+40. How can you randomize the items of a list in place in python?
+    use the random module and a function call shuffle()
+    or use the fisher yates shuffle - use index to shuffle, once an item is palced at an index, it cannot longer be moved
+
+41. Mergesort in python
+def mergeSort():
+    if len(alist) > 1:
+        mid =len(alist)//2
+        lefthalf = alist[:mid]
+        righthalf = alist[mid:]
+
+        mergeSort(lefthalf)
+        mergeSort(righthalf)
+
+        i, j, k = 0, 0, 0
+
+        while i < len(lefthalf) and j< len(righthalf):
+            if lefthalf[i] < righthalf[j]:
+                alist[k] = lefthalf[i]
+                i += 1
+            else:
+                alist[k] = righthalf[j]
+                j +=1
+            k += 1
+
+        while i < len(lefthalf):
+            alist[k] = lefthalf[i]
+            i +=1
+            k +=1
+
+        while j < len(righthalf):
+            alist[k] = righthalf[j]
+            j +=1
+            k +=1
+
+42. Explain Inheritance in Python with an example
+    1. Single Inheritance - one base one child
+    2. Mult-level Inheritance - multiple base and mult child
+    3. Hierarchical ingeritance - one base multiple child
+    4. Multiple Inheritance - multiple base one child
+class Parent(object):
+    v1=whatever
+    v2=whatever
+class Child(Parent):
+    pass:
+
+    Child.v1
+
+42. What is Django Architecture?
+    Template -- Model -- VIEW - - URL - Django - User 
+    The developer provide the model, the view, and the template then just maps it to a URL and DJango does the magic to serve it to the user
+    Default database is SQLITE
+    import datetime
+    from django.db import models
+    from django.utils import timezone
+
+    class Choice(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    choice_text = models.CharField(max_length=200)
+    votes = models.IntegerField(default=0)
+    def __str__(self):
+        return self.choice_text
+
+43. Explain the use of session in Django framework
+Let the user store and retrieve data on a per-site-vistor basis. Django abstracts the process of sending and receiving cookies, by placing a session ID cookie on the client side and storing all related data 
+on the server side. Nice from a security perspective
+
+44. List out inheritance styles in Django
+Three possible inheritance styles
+Abstract base classes: only want parent's class to hold information that you don't want to type out for eaach child
+Multi-table inheritance: Sub-classing an existing model and need each model to have its own database table 
+Proxy model: Use this model if you want to modify the python level behavior of the model without changing the model's field
+
+45. What advantages does NumPy arrays offers over (nested) Python Lists?
+ 1. More effficient and more convenient. Got access to vector and matrix operations. Fast, built in convolution, fast searching, basic stat, linear albe, scipy, and graphs
+
+46. Difference between NumPy and SciPy?
+SciPy offer more advances linear algebra modules and many other numerical algorithms.
+
+47. How do I make 3D plots/visualizations using NumPy/SciPy?
+Like 2D plotting, 3D graphics is beyond the scope of NumPy and SciPy, but just as in the 2D case, packages exist that integrate with NumPy. Matplotlib provides basic 3D plotting in the mplot3d subpackage, 
+whereas Mayavi provides a wide range of high-quality 3D visualization features, utilizing the powerful VTK engine.

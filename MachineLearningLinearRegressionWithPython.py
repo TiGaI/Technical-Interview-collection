@@ -158,3 +158,44 @@ print(classification_report(y_test,rfc_pred))
 
 #K Nearest Neightbors
 #Use to find connection between the data and target classes and predicts a class for a new data point based off of the features
+#con: High Prediction Cost, not good with multi dimensional data
+#Categorical features don't work well
+
+1. Get the file and basic information
+
+2. Get the standard version of the data
+scaler = StandardScaler()
+scaler.fit(df.drop('TARGET CLASS', axis=1))
+scaled_features = scaler.transform(df.drop('TARGET CLASS', axis=1))
+df_feat = [d.DataFrame(scaled_features, columns=df.columns[:-1])]
+
+3. Train the data
+from sklearn.model_selection import train_test_split
+X = scaled_features
+Y = df['TARGET CLASS']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30)
+
+4. Find the ideal k constant
+from sklearn.neighbors import KNeighborsClassifier
+knn= KNeighborsClassifier(n_neighbors =1)
+knn.fit(X_train,y_train)
+pred = knn.predict(X_test)
+
+from sklearn.metrics import classification_report, confusion_matrix
+print(confusion_matrix(y_test,pred))
+print(classification_report(y_test,prep))
+
+#plotting the error rate to see which one has the lowest k value
+error_rate = []
+
+for i in range(1,40):
+    knn = KNeighborsClassifier(n_neighbors=i)
+    knn.fit(X_Train,y_train)
+    pred_i = knn.predict(X_Train)
+    error_rate.append(np.mean(pred_i != y_test))
+
+plt.figure(figsize=(10,6))
+plt.plot(range(1,40), error_rate,color='color',linestyle='dashed',marker='o', marketfacecolor='red', markersize = 10)
+plt.title("")
+plt.xlabel('')
+plt.ylabel('')
