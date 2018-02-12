@@ -17,7 +17,7 @@ Answer: information response - 100, Successful responses - 200, Redirection Mess
 5. How the web actually work? What happen when you actually type google
 
 Browser checks the cache for a DNS record for the correcponding IP address. Check four different places: Borwser cache, OS cache, Router Cache, IPS Cache
-If requested URL is not in cache, ISP's DNS server initiates a DNS query - small packet of small information. Browser initiates a TCP connection and does a three way handshake.
+If requested URL is not in cache, ISP's DNS server initiates a DNSystem query - small packet of small information. Browser initiates a TCP connection and does a three way handshake.
 Then the browser sends an HTTP request to the web server. Server handles the request and sends back a HTML responses. 
 The browser then run the HTML content and then additional elements on the web page is loaded, such as images, css, JS
 
@@ -131,35 +131,38 @@ SQL is digital, works best when a database is clearly defined and discrete items
 NoSql is work best with data that is organic and has some type of variablity.
 
 35. Using Redis on Caching
-if (isset($queryParams['search'])) {
+const redis = require('redis');
+const REDIS_PORT = process.env.REDIS_PORT;
 
-    $redis = new Client();
-    $hash = md5($_SERVER['QUERY_STRING']);
-    if (!$redis->get($hash . '-results')) {
+const app = express();
+const client = redis.createClient(REDIS_PORT);
 
-        $diffbot = new Diffbot(DIFFBOT_TOKEN);
+client.set('some key', 'some value');
+client.setex('some key', 3600, 'some value');
+var repoNumber = response.body.length;
+// for this tutorial we set expiry to 5s but it could be much higher
+client.setex(org, 5, repoNumber);
+res.send(respond(org, repoNumber));
 
-        // Building the search string
-        $searchHelper = new SearchHelper();
-        $string = (isset($queryParams['q']) && !empty($queryParams['q']))
-            ? $queryParams['q']
-            : $searchHelper->stringFromParams($queryParams);
+#Retrieving the cached data
+app.get('/repos', cache, getNumberOfRepos);
 
-        // Basics
-        $search = $diffbot
-            ->search($string)
-            ->setCol('sp_search')
-            ->setStart(($queryParams['page'] - 1) * $resultsPerPage)
-            ->setNum($resultsPerPage);
+function cache(req, res, next) {
+    const org = req.query.org;
+    client.get(org, function (err, data) {
+        if (err) throw err;
 
-        $redis->set($hash . '-results', serialize($search->call()));
-        $redis->expire($hash . '-results', 86400);
-        $redis->set($hash . '-info', serialize($search->call(true)));
-        $redis->expire($hash . '-info', 86400);
-    }
+        if (data != null) {
+            res.send(respond(org, data));
+        } else {
+            next();
+        }
+    });
+}
 
-    $results = unserialize($redis->get($hash . '-results'));
-    $info = unserialize($redis->get($hash . '-info'));
+client.get(key, function (err, data) {
+});
+
 
 36. Count all possible paths from top left to bottom right of a MxN matrix with the constraints that from each cell you can either move only right or down
 #recursion:
