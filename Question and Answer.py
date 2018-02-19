@@ -281,3 +281,7 @@ SciPy offer more advances linear algebra modules and many other numerical algori
 47. How do I make 3D plots/visualizations using NumPy/SciPy?
 Like 2D plotting, 3D graphics is beyond the scope of NumPy and SciPy, but just as in the 2D case, packages exist that integrate with NumPy. Matplotlib provides basic 3D plotting in the mplot3d subpackage, 
 whereas Mayavi provides a wide range of high-quality 3D visualization features, utilizing the powerful VTK engine.
+
+48. Sorted a string S without forloop or while or join, and one sorted function using lambda
+Input = "Sorting1234" output = "ginortS1324"
+print(*(sorted(input(), key=lambda x: (x.isdigit() and int(x)%2==0, x.isdigit(), x.isupper(), x.islower(), x))), sep='')

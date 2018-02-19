@@ -200,3 +200,4 @@ anyname()
 #logger, handler and formatters
 import logging
 logging.basicConfig(filename="sample.log", level=logging.DEBUG, format='%(asctime)s:%(name)s:%(message)s')
+
