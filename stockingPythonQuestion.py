@@ -1,3 +1,8 @@
+High frequency World:
+	1. 
+
+
+
 What is stochastic calculus in finance use for: 
 modeling the random option of an asset price in the black-scholes modeling
 Used to model the random motion of an asset price and allow derivative to have a random component determined by a Brownian motion
@@ -28,10 +33,19 @@ four risks:
 	4. Potential for scams
 
 Market Microstructure
+1. Market Structure and Design Issues
+	Two basis participants - 1. Dealer Markets - using a dealer to serves as intermediary
+							2. Agency Markets - Broker's brokter who mathes them with other public broker orders
 
+SuperDOT - Electronic order routing system to direct buy and sell orders to a specialist's workstation at the trading post
+BBSS(Broker Booth Support System) - receive order on the trading floor
+NYSE e-Broker - wireless handheld tool enable floor broker to submmit and manage quotes and order
+NYSE Direct+ : High Speed electronic communication system between NYSE member firms and the exchange for institutiional use mostly
+
+2. Price Formation and Price Discovery - prevent large trade to affect markets
 
 The Bernouilli Process-
-
+Expectation - 
 
 
 Options Greeks:
@@ -53,7 +67,6 @@ for call options:
 In the money if the share price is above the strike price
 out of the money if the share price is below the strike price
 
-
 What is the Greeks in Options?
 	1. Delta - measures the sensitvity of an option's value to a price change in the underlying asset.
 		Call Option + Put Options -
@@ -63,7 +76,6 @@ What is the Greeks in Options?
 	4. Vega - meausres an option's sensitvity to changes in Volatility.
 		Increase if volativility increase 
 They all measure the sensentive of price
-
 
 10 Options Strategies to Know
 	1. Cover call - purchase the assets outright and simultaneously write a call option on those same assets
@@ -77,4 +89,19 @@ They all measure the sensentive of price
 	9. Iron Condor - holds a long and short position in two different strangle Strategies
 	10. Iron Butterfly - don't understand.
 
+Monte Carlo Methods - compute possbility by running actual event and keep track of the result. Find converging points with number of trials. Estimation but powerful technique.
+Finite Difference Method - 
+
+
+Probabilities:
+	P(A) - 1/2
+	P(B) - 1/2
+	p(B|A) - 1/3 - the probably of getting A after pick A = P(B and A)/ P(A)
+	p(A and B) = P(A) * P(B|A)
+	P(A or B) = P(A) + P(B) - P(A and B)
+	P(A|B) = P(A and B)/ P(B)
+
+	“ The Birthday Problem” (famous) In a roomful of 30 people, what is the probabilit y t hat at
+least two people have the same birt hday? Assume birt hdays are uniformly distributed and
+there is no leap year complication. (Hint: what is the probability that they all have different birthdays?)
 

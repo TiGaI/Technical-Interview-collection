@@ -1,0 +1,39 @@
+1. A jar contains four marbles: three red, one whit e. Two marbles are drawn w ith replacement
+List a sample space containing four outcomes:
+{RR, RW, WR,WW}  9/16 3/16 3/16 1/16
+
+2. We are playing w ith a short deck, as shown at right . Let "H" be the event t he card drawn is a heart. 2Ì 2Ë 2Ê 2Í
+Let " D" be the event the card drawn is a diamond. Let "A" be the event the card is an ace.
+
+Are H and D independent events? No,  they are mutually exclusive. If one occurs, the other cannot!
+Are H and A independent events? Yes, they are independent. Each of this even can occurs at draw.
+
+Conditional Probabilities - The probably of the next event change given the previous event
+
+
+3. If P(A) = ½ and P(B) = ½ and P(B|A) = 1/3 , find:
+P(A and B) =  P(A) P(B| A) = (½ ) (a) = 1/6
+P(A or B) =  P(A ) + P(B) – P(A an d B) = ½ + ½ – 1/ 6 = 5/ 6
+P(A| B) = P(A and B) / P(B)
+
+4. It is dif fic ult to calcu late d irect ly t he ch ance o f at least t w o m atc hing b irth days, becau se you have to allow for
+so many possibilities: just tw o matching, three matching, two pairs matching, etc. etc . Th e COM PLEM ENT of th is
+ev en t is, ho w ev er, qu it e sim pl e. If the re are NOT at least tw o m at chi ng birt hd ay s, the n t he re are NON E!
+
+two birthday
+365/365*(364/365)*....*336/365 = over 70% atleast two birthdays match
+three birthday = P(None) - P(2 sharing birthday) * (The number of different way to share 2 birthday)
+
+The number of different way to share 2 birthday = 24!/(2! *(22!)) = C(24 2) = 276
+
+p(None) = P(365, 24)/365^24
+p(1) = 276 * P(365 23)
+1 - P(none) - P(1) = 0.16578
+
+5. A 1-inch-diameter coin is thrown on a table covered wit h a grid of lines tw o inches apart.
+What is the probability t he coin lands in a square without touching any of the lines of t he grid?
+The area of the whole square is 2 x 2 = 4
+When the centre of the coin is in the small square,the coin touches only one colour
+The area of the small square is 1, because the side is 1.
+So the shaded area is 4 - 1 = 3.
+The chance of touching two colours is therefore 3/4 or 75 per cent.

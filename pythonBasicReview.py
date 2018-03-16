@@ -168,6 +168,9 @@ $ end of the string
 pattern = re.compile(r'\d\d\d[-.]\d\d\d[-.]\d\d\d\d')
 r"[A-z]{1,2}[0-9R][0-9A-Z]? [0-9][ABD-HJLNP-UW-Z]{2}"
 r"(Mr|Mrs|Ms)\.?\s[A-Z]\w*"
+
+matches anything between two words
+print(re.sub(r'(?<=\w)([^\w]+)(?=\w)'," ", string))
 matches = pattern.finditer(text_to_search)
 
 for match in matches:
