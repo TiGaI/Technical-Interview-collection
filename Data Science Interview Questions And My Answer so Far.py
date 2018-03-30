@@ -54,3 +54,8 @@ Non Parametric models does not assume any theoretical distribution of the data -
 correclation - two way phenomenon, where regression is one way
 
 
+12. Systematic sample vs opportunity sample vs stratified sample vs cluster sample
+SS - every other n one
+OS - all within a certain group
+Stratified Sample - divide by homogeniues group
+Cluster sample - break things up into groups - that has different charactersics
